@@ -1,5 +1,6 @@
 [workspace]
 members = [
-    "config_parser",
     "stream_provider",
+    "config_parser",
+    "gst_utils",
 ]

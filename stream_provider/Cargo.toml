@@ -6,4 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+gst_utils = { path = "../gst_utils" }
 config_parser = { path = "../config_parser" }

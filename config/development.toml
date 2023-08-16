@@ -2,8 +2,26 @@
 uri = 'https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm'
 x = 0
 y = 0
-width = 640
-height = 480
+width = 320
+height = 240
+[[sources]]
+uri = 'https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm'
+x = 320
+y = 0
+width = 320
+height = 240
+[[sources]]
+uri = 'https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm'
+x = 0
+y = 240
+width = 320
+height = 240
+[[sources]]
+uri = 'https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm'
+x = 320
+y = 240
+width = 320
+height = 240
 
 [[sources]]
 uri = 'https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm'
@@ -14,3 +32,6 @@ height = 480
 
 [output]
 format = "stream"
+
+[gstreamer]
+debug = "Warning"
