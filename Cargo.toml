@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "config_parser",
+    "stream_provider",
+]
