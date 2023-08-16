@@ -4,12 +4,30 @@ use std::env;
 
 #[derive(Deserialize, Debug)]
 #[allow(unused)]
-struct Source {
+pub struct Source {
     uri: String,
     x: i32,
     y: i32,
     width: i32,
     height: i32,
+}
+
+impl Source {
+    pub fn get_uri(&self) -> &String {
+        &self.uri
+    }
+    pub fn get_x_pos(&self) -> &i32 {
+        &self.x
+    }
+    pub fn get_y_pos(&self) -> &i32 {
+        &self.y
+    }
+    pub fn get_width(&self) -> &i32 {
+        &self.width
+    }
+    pub fn get_height(&self) -> &i32 {
+        &self.height
+    }
 }
 
 #[derive(Deserialize, Debug)]
@@ -41,5 +59,9 @@ impl AppConfig {
         println!("output: {:#?}", s.get::<String>("output.format"));
 
         s.try_deserialize()
+    }
+
+    pub fn get_sources(&self) -> &Vec<Source> {
+        &self.sources
     }
 }

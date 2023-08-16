@@ -1,10 +1,12 @@
 mod settings;
 
+use cfg::ConfigError;
 use settings::AppConfig;
 
-pub fn load() {
-    let config = AppConfig::new();
+pub fn load() -> Result<AppConfig, ConfigError> {
+    let config = AppConfig::new().unwrap();
     println!("{:#?}", config);
+    Ok(config)
 }
 
 pub fn add(left: usize, right: usize) -> usize {
