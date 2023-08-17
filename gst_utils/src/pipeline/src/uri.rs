@@ -1,4 +1,5 @@
 use gst::prelude::*;
+use log::{debug, warn};
 
 pub struct SourcePad {
     src_pad: gst::Pad,
@@ -28,7 +29,7 @@ impl SourcePad {
 
         let videoconvert_weak = videoconvert.downgrade();
         src.connect_pad_added(move |src, src_pad| {
-            println!("Received new pad {} from {}", src_pad.name(), src.name());
+            debug!("Received new pad {} from {}", src_pad.name(), src.name());
             let videoconvert = match videoconvert_weak.upgrade() {
                 Some(videoconvert) => videoconvert,
                 None => return,
@@ -42,14 +43,14 @@ impl SourcePad {
                 .static_pad("sink")
                 .expect("Failed to get static sink pad from convert");
             if sink_pad.is_linked() {
-                println!("We are already linked. Ignoring.");
+                warn!("We are already linked. Ignoring.");
                 return;
             }
             let res = src_pad.link(&sink_pad);
             if res.is_err() {
-                println!("Type is video/x-raw but link failed.");
+                warn!("Type is video/x-raw but link failed.");
             } else {
-                println!("Link succeeded (type video/x-raw).");
+                debug!("Link succeeded (type video/x-raw).");
             }
         });
 

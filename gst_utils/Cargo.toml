@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 glib = "0.18.1"
 gst = { version = "0.21", package = "gstreamer" }
+log = "0.4"
+env_logger = "0.10"
