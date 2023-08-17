@@ -55,8 +55,8 @@ impl AppConfig {
             .build()?;
 
         // println!("debug: {:?}", s.get_bool("debug"));
-        println!("sources: {:#?}", s.get::<Vec<Source>>("sources"));
-        println!("output: {:#?}", s.get::<String>("output.format"));
+        // println!("sources: {:#?}", s.get::<Vec<Source>>("sources"));
+        // println!("output: {:#?}", s.get::<String>("output.format"));
 
         s.try_deserialize()
     }

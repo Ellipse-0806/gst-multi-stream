@@ -5,7 +5,7 @@ use settings::AppConfig;
 
 pub fn load() -> Result<AppConfig, ConfigError> {
     let config = AppConfig::new().unwrap();
-    println!("{:#?}", config);
+    // println!("{:#?}", config);
     Ok(config)
 }
 
