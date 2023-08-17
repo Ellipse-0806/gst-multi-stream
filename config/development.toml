@@ -23,13 +23,6 @@ y = 240
 width = 320
 height = 240
 
-[[sources]]
-uri = 'https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm'
-x = 640
-y = 0
-width = 640
-height = 480
-
 [output]
 format = "stream"
 
