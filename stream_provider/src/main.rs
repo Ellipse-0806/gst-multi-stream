@@ -1,20 +1,21 @@
 use config_parser;
-use gst_utils::pipeline::comp::MultiStreamPL;
-use gst_utils::pipeline::sink::SinkElement;
-use gst_utils::pipeline::src::uri::SourcePad;
-use gst_utils::pipeline::Pipeline;
+use gst_utils::{
+    debug_utils,
+    pipeline::{comp::MultiStreamPL, sink::SinkElement, src::uri::SourcePad, Pipeline},
+};
 
 fn main() {
     let config = config_parser::load().expect("Could not loading setting file.");
     let sources = config.get_sources();
+    debug_utils::init_debug_utils();
     let pipeline = Pipeline::new().unwrap();
     let multi_stream = MultiStreamPL::new(pipeline.get_pipeline()).unwrap();
-    let sink = SinkElement::new(pipeline.get_pipeline()).unwrap();
+    let sink = SinkElement::init_fake(pipeline.get_pipeline()).unwrap();
     multi_stream.link(sink.get_element()).unwrap();
 
     for (i, source) in sources.iter().enumerate() {
-        println!("No.{}\n{:#?}", i, source);
         let src_pad = SourcePad::new(source.get_uri(), pipeline.get_pipeline(), i).unwrap();
+
         multi_stream
             .link_pad(
                 source.get_x_pos(),
@@ -26,4 +27,5 @@ fn main() {
             .unwrap();
     }
     pipeline.run().unwrap();
+    debug_utils::enable_debug_utils(pipeline.get_pipeline());
 }
